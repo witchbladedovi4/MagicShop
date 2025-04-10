@@ -12,22 +12,11 @@ namespace MagicShop
     { 
         public double TechLevel {  get; set; }
         public string Manufacturer {  get; set; }
-        public override string Serialize()
-        {
-            throw new NotImplementedException();
-        }
+        public override string Serialize() => $"Name: {Name} - ModernArtifact\n" +
+            $"Power: {PowerLevel}\n" +
+            $"TechLevel: {TechLevel}\n" +
+            $"Manufacturer: {Manufacturer}";
 
-        public override string ExportToJson()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
-        }
-
-        public override string ExportToXml()
-        {
-            var serializer = new XmlSerializer(typeof(AntiqueArtifact));
-            using var writer = new StringWriter();
-            serializer.Serialize(writer, this);
-            return writer.ToString();
-        }
+        
     }
 }

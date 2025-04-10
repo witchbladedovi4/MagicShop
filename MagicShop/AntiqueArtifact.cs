@@ -14,22 +14,10 @@ namespace MagicShop
         public int Age {  get; set; }
         public string OriginRealm {  get; set; }
 
-        public override string Serialize()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string ExportToJson()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
-        }
-
-        public override string ExportToXml()
-        {
-            var serializer = new XmlSerializer(typeof(AntiqueArtifact));
-            using var writer = new StringWriter();
-            serializer.Serialize(writer, this);
-            return writer.ToString();
-        }
+        public override string Serialize() => $"Name: {Name} - AntiqueArtifact\n" +
+            $"Power: {PowerLevel}\n" +
+            $"Age: {Age}\n" +
+            $"OriginRealm: {OriginRealm}";
+        
     }
 }

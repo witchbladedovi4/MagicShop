@@ -14,7 +14,8 @@ namespace MagicShop
         {
             try
             {
-                var serialize = new XmlSerializer(typeof(List<AntiqueArtifact>));
+                var serialize = new XmlSerializer(typeof(List<AntiqueArtifact>),
+                    new XmlRootAttribute("ArrayOfAntiqueArtifact"));
                 using var reader = new StreamReader(path);
                 return (List<AntiqueArtifact>)serialize.Deserialize(reader);
             }
@@ -27,7 +28,10 @@ namespace MagicShop
 
         public void SaveData(List<AntiqueArtifact> data, string path)
         {
-
+            var serializer = new XmlSerializer(typeof(List<AntiqueArtifact>),
+                new XmlRootAttribute("ArrayOfAntiqueArtifact"));
+            using var writer = new StreamWriter(path);
+            serializer.Serialize(writer, data);
         }
     }
 }

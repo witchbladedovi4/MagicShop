@@ -6,20 +6,17 @@ using System.Threading.Tasks;
 
 namespace MagicShop
 {
-    public enum Rarity
-    {
-        Common, Rare, Epic, Legendary
-    }
-    public abstract class Artifact : IExportable
+    
+    public abstract class Artifact 
     {
         
-        public Guid Id { get; set; }
+        public int Id { get; set; } 
         public string Name { get; set; }
         public int PowerLevel {  get; set; }
         public Rarity Rarity { get; set; }
         public abstract string Serialize();
-        public abstract string ExportToJson();
-        public abstract string ExportToXml();
+
+
 
     }
 }

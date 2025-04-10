@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace MagicShop
 {
-    internal interface IDataProcessor<T>
+    public enum Rarity
     {
-        List<T> LoadData(string filePath);
-        void SaveData(List<T> data, string filePath);
+        Common, 
+        Rare,
+        Epic,
+        Legendary
     }
-
 }
