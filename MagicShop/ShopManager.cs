@@ -35,8 +35,8 @@ namespace MagicShop
             try
             {
                 LoadData(new XmlProcessor(), "Antique.xml");
-                LoadData(new JsonProcessor(), "Modern.xml");
-                LoadData(new LegendaryProcessor(), "Legends.xml");
+                LoadData(new JsonProcessor(), "Modern.json");
+                LoadData(new LegendaryProcessor(), "Legends.txt");
             }
             catch(Exception ex) 
             {

@@ -1,0 +1,18 @@
+[
+	{
+	"Id": "3",
+	"Name": "Hyper Phase Blaster",
+	"PowerLevel": 88,
+	"Rarity": "Epic",
+	"TechLevel": 9.5,
+	"Manufacturer": "TechMage Inc."
+	},
+	{
+	"Id": "4",
+	"Name": "Philosopher Stone",
+	"PowerLevel": 13,
+	"Rarity": "Epic",
+	"TechLevel": 6.4,
+	"Manufacturer": "TechMage Inc."
+	}
+]
