@@ -1,0 +1,2 @@
+Sword of Destiny|100|Legendary|Drains life from the wielder|true
+Monkey King Bar|84|Legendary|Allows each attack with a 75% chance to ignore the target's evasion|true
