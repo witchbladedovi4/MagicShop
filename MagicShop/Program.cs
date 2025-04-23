@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace MagicShop
 {
@@ -27,14 +28,33 @@ namespace MagicShop
                     case "1":
                         ListArtifacts(ShopManager.Artifacts);
                         break;
-                        
+
+                    case "2":
+                        var cursed = ShopManager.FindCursedAtrifacts(); 
+                        Console.WriteLine($"Найдено {cursed.Count} проклятых артефактов:");
+                        foreach (var item in cursed)
+                        {
+                            Console.WriteLine($"- {item.Name} (Сила: {item.PowerLevel}, Проклятие: {item.CurseDescription})");
+                        }
+
+                        File.WriteAllText("cursed_artifacts.json",
+                            JsonConvert.SerializeObject(cursed, Formatting.Indented));
+                       
+                        break;
+                    case "3":
+                        var byRarity = ShopManager.GroupByRarity();
+                        foreach (var group in byRarity)
+                        {
+                            Console.WriteLine($"{group.Key}: {group.Value} шт.");
+                        }
+                        break;
                 }
                 static void ListArtifacts(IEnumerable<Artifact> artifacts)
                 {
                     Console.WriteLine("\nАртифакты:");
                     foreach (var artifact in artifacts)
                     {
-                        Console.WriteLine(artifact.Serialize());
+                        Console.WriteLine(artifact.Serialize()+'\n');
                     }
                     Console.WriteLine($"Всего: {artifacts.Count()}");
                 }
