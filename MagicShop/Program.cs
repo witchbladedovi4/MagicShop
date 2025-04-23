@@ -20,8 +20,7 @@ namespace MagicShop
                     "\n4)Показать артифакты по силе" +
                     "\n5)Сгененировать report.txt" +
                     "\n6)Экпортировать JSON" +
-                    "\n7)Экпортировать XML" +
-                    "\n8)Выход");
+                    "\n7)Выход");
                 var chose = Console.ReadLine();
                 switch ( chose )
                 {
@@ -47,6 +46,34 @@ namespace MagicShop
                         {
                             Console.WriteLine($"{group.Key}: {group.Value} шт.");
                         }
+                        break;
+
+                    case "4":
+
+                            var top = ShopManager.TopByPower();
+                            Console.WriteLine($"Топ  артефактов по силе:");
+                            foreach (var item in top)
+                            {
+                                Console.WriteLine($"- {item.Name} (Сила: {item.PowerLevel}, Редкость: {item.Rarity})");
+                            }
+                        
+                        break;
+                    case "5":
+
+                        ShopManager.GenerateReport();
+                        Console.WriteLine("Отчет сохранен в файл report.txt");
+                        break;
+
+                    case "6":
+                        File.WriteAllText("artifacts.json",
+                            JsonConvert.SerializeObject(ShopManager.Artifacts, Formatting.Indented));
+                        Console.WriteLine("Результаты сохранены в cursed_artifacts.json");
+                        break;
+                    case "7":
+                        return;
+
+                    default:
+                        Console.WriteLine("Неизвестная команда");
                         break;
                 }
                 static void ListArtifacts(IEnumerable<Artifact> artifacts)

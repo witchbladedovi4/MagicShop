@@ -81,11 +81,7 @@ namespace MagicShop
                 .ToDictionary(a => a.Key, a => a.Count());
         }
 
-        public List<Artifact> TopByPower(int count)
-        {
-            return Artifacts.OrderByDescending(a => a.PowerLevel)
-                .Take(count)
-                .ToList ();
-        }
+        public List<Artifact> TopByPower() => [.. Artifacts.OrderByDescending(a => a.PowerLevel)];
+        
     }
 }
